@@ -34,5 +34,5 @@ export function clearDisplay() {
      * Clears the Calculator display
      */
     displayString = "";
-    updateDisplay();
+    display.innerText = "(*_*)";
 }
