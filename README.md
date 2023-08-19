@@ -1,2 +1,4 @@
 # online-calculator
-A live web calculator that I created as one of my TOP (the odin project) projects.
+
+A live web calculator the I'm currently working as one of my TOP project.
+Will update .md as I progress.
