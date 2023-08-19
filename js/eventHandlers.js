@@ -2,6 +2,7 @@ import {
     changeSign,
     clearDisplay,
     operate,
+    undoValue,
     updateNumber,
     updateOperator,
 } from "./calculator.js";
@@ -24,4 +25,8 @@ export function clearButtonHandler() {
 
 export function changeSignButtonHandler() {
     changeSign();
+}
+
+export function delButtonHandler() {
+    undoValue();
 }

@@ -94,6 +94,20 @@ export function changeSign() {
     updateDisplay();
 }
 
+export function undoValue() {
+    /**
+     * Function to undo user inputs
+     */
+    if (operator === DEFAULT_VALUE) {
+        firstValue = +("" + firstValue).slice(0, -1);
+    } else if (secondValue === DEFAULT_VALUE) {
+        operator = "";
+    } else {
+        secondValue = ("" + secondValue).slice(0, -1);
+    }
+    updateDisplay();
+}
+
 function updateFirstValue(value) {
     /**
      * Function to update variable firstValue
