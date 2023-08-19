@@ -1,6 +1,6 @@
 import {
-    updateDisplay,
     clearDisplay,
+    operate,
     updateNumber,
     updateOperator,
 } from "./calculator.js";
@@ -14,7 +14,7 @@ export function operatorButtonHandler(e) {
 }
 
 export function assignButtonHandler(e) {
-    console.log(e.target.innerText);
+    operate();
 }
 
 export function clearButtonHandler() {
