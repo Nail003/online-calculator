@@ -2,32 +2,36 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 body {
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 15vh;
 }
 
 .calculator {
-    width: 400px;
+    width: 600px;
     display: flex;
     flex-direction: column;
 }
 
 .display {
     display: flex;
-    background: lightyellow;
-    border: 1px solid black;
-    font-size: 32px;
-    padding: 16px 8px;
+    background: #eee;
+    border: 1rem solid #222;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    font-size: 2rem;
+    padding: 3vh 2vw;
 }
 
 .buttonContainer {
     display: flex;
     flex-direction: column;
+    background: darkslategrey;
+    padding: 0 1vw;
 }
 
 .row {
@@ -36,14 +40,33 @@ body {
 
 .calculatorButton {
     flex: 1;
-    border: 1px solid darkslategray;
-    background: linen;
+    border: 2px solid darkslategray;
+    background: hsl(180, 99%, 36%);
+    border-radius: 8px;
     padding: 8px 8px;
     transition: font-size 200ms;
 }
 
 .calculatorButton:hover {
     background: lightcyan;
-    font-size: 32px;
+    font-size: 1.4rem;
     border-color: black;
+}
+
+.operatorButton, .assignButton {
+    background: hsl(33, 100%, 60%);
+}
+
+.clearButton, .delButton, .answerButton {
+    background: hsl(0, 97%, 57%);
+}
+
+.footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: white;
+    background: #333;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 1vh;
 }
