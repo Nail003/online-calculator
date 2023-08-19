@@ -29,7 +29,10 @@ export function updateDisplay(newText = "") {
     display.innerText = displayString;
 }
 
-export function clearScreen() {
+export function clearDisplay() {
+    /**
+     * Clears the Calculator display
+     */
     displayString = "";
     updateDisplay();
 }
