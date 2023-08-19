@@ -1,10 +1,13 @@
 import { add, subtract, multiply, divide } from "./math.js";
 
+//Constants
+const DEFAULT_VALUE = "";
+
 // Calculator variable
-let displayString = "";
-let firstValue = "";
-let secondValue = "";
-let operator = "";
+let displayString = DEFAULT_VALUE;
+let firstValue = DEFAULT_VALUE;
+let secondValue = DEFAULT_VALUE;
+let operator = DEFAULT_VALUE;
 
 // Storing DOM objects for better access speed
 const display = document.querySelector(".display");
@@ -21,7 +24,7 @@ export function operate() {
 
     // Edge Case: No complete input
     if (
-        (operator === "" || secondValue === "") &&
+        (operator === DEFAULT_VALUE || typeof secondValue !== "number") &&
         typeof firstValue === "number"
     )
         return;
@@ -52,7 +55,7 @@ export function updateNumber(value) {
      * Depending upon an operator is selected or not
      * Also refresh display
      */
-    if (operator === "") updateFirstValue(value);
+    if (operator === DEFAULT_VALUE) updateFirstValue(value);
     else updateSecondValue(value);
     updateDisplay();
 }
@@ -69,11 +72,23 @@ export function clearDisplay() {
     /**
      * Clears the Calculator display
      */
-    firstValue = "";
-    secondValue = "";
-    operator = "";
+    firstValue = DEFAULT_VALUE;
+    secondValue = DEFAULT_VALUE;
+    operator = DEFAULT_VALUE;
     updateDisplay();
     display.innerText = "(*_*)";
+}
+
+export function changeSign() {
+    /**
+     * Will automatically change the sign of firstValue or secondValue variables
+     * Depending on whether an operator is selected or not
+     * Also refresh display
+     */
+    if (operator === DEFAULT_VALUE || secondValue === DEFAULT_VALUE)
+        firstValue *= -1;
+    else secondValue *= -1;
+    updateDisplay();
 }
 
 function updateFirstValue(value) {

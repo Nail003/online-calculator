@@ -1,4 +1,5 @@
 import {
+    changeSign,
     clearDisplay,
     operate,
     updateNumber,
@@ -19,4 +20,8 @@ export function assignButtonHandler(e) {
 
 export function clearButtonHandler() {
     clearDisplay();
+}
+
+export function changeSignButtonHandler() {
+    changeSign();
 }
