@@ -1,4 +1,5 @@
 import {
+    answerButtonHandler,
     assignButtonHandler,
     changeSignButtonHandler,
     clearButtonHandler,
@@ -14,6 +15,7 @@ const clearButton = document.querySelector(".clearButton");
 const assignButton = document.querySelector(".assignButton");
 const changeSignButton = document.querySelector(".changeSignButton");
 const delButton = document.querySelector(".delButton");
+const answerButton = document.querySelector(".answerButton");
 
 numberButtons.forEach((button) => {
     button.addEventListener("click", numberButtonHandler);
@@ -25,3 +27,4 @@ clearButton.addEventListener("click", clearButtonHandler);
 assignButton.addEventListener("click", assignButtonHandler);
 changeSignButton.addEventListener("click", changeSignButtonHandler);
 delButton.addEventListener("click", delButtonHandler);
+answerButton.addEventListener("click", answerButtonHandler);

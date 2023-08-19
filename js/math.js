@@ -24,5 +24,5 @@ export function divide(a, b) {
      * Return the result of division of first number with second
      * For divisible by zero error it returns error string `Cannot divide a by b`
      */
-    return b === 0 ? `Cannot divide ${a} by ${b}` : a / b;
+    return b === 0 ? `Are u from DARK REUNION ???????????` : a / b;
 }

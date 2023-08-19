@@ -8,6 +8,7 @@ let displayString = DEFAULT_VALUE;
 let firstValue = DEFAULT_VALUE;
 let secondValue = DEFAULT_VALUE;
 let operator = DEFAULT_VALUE;
+let lastAnswer = DEFAULT_VALUE;
 
 // Flags
 let decimalFlag = false;
@@ -37,6 +38,9 @@ export function operate() {
     if (operator === "-") result = subtract(firstValue, secondValue);
     if (operator === "x") result = multiply(firstValue, secondValue);
     if (operator === "/") result = divide(firstValue, secondValue);
+
+    // Storing result
+    lastAnswer = result;
 
     // Display result
     clearDisplay();
@@ -109,6 +113,16 @@ export function undoValue() {
     updateDisplay();
 }
 
+export function assignLastAnswerToCurrentValue() {
+    /**
+     * Assign last answer to current selected variable
+     */
+    if (lastAnswer === DEFAULT_VALUE) return;
+    if (operator === DEFAULT_VALUE) firstValue = lastAnswer;
+    else secondValue = lastAnswer;
+    updateDisplay();
+}
+
 function updateFirstValue(value) {
     /**
      * Function to update variable firstValue
@@ -142,7 +156,7 @@ function updateValueHelper(variable, value) {
     }
 
     // Condition below is here to handle firstValue as firstValue is also used to display text messages
-    if (typeof variable !== "number") return +value;
+    if (typeof variable !== "number" || variable === Infinity) return +value;
     variable += value;
     return +variable;
 }

@@ -1,4 +1,5 @@
 import {
+    assignLastAnswerToCurrentValue,
     changeSign,
     clearDisplay,
     operate,
@@ -29,4 +30,8 @@ export function changeSignButtonHandler() {
 
 export function delButtonHandler() {
     undoValue();
+}
+
+export function answerButtonHandler() {
+    assignLastAnswerToCurrentValue();
 }
