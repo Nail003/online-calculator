@@ -1,11 +1,16 @@
-import { updateDisplay, clearDisplay } from "./calculator.js";
+import {
+    updateDisplay,
+    clearDisplay,
+    updateNumber,
+    updateOperator,
+} from "./calculator.js";
 
 export function numberButtonHandler(e) {
-    updateDisplay(e.target.innerText);
+    updateNumber(e.target.innerText);
 }
 
 export function operatorButtonHandler(e) {
-    console.log(e.target.innerText);
+    updateOperator(e.target.innerText);
 }
 
 export function assignButtonHandler(e) {
