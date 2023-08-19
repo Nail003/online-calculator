@@ -9,6 +9,9 @@ let firstValue = DEFAULT_VALUE;
 let secondValue = DEFAULT_VALUE;
 let operator = DEFAULT_VALUE;
 
+// Flags
+let decimalFlag = false;
+
 // Storing DOM objects for better access speed
 const display = document.querySelector(".display");
 
@@ -95,20 +98,36 @@ function updateFirstValue(value) {
     /**
      * Function to update variable firstValue
      */
-    if (typeof firstValue !== "number") firstValue = +value;
-    else {
-        firstValue *= 10;
-        firstValue += +value;
-    }
+    firstValue = updateValueHelper(firstValue, value);
 }
 
 function updateSecondValue(value) {
     /**
      * Function to update variable secondValue
      */
-    if (typeof secondValue !== "number") secondValue = +value;
-    else {
-        secondValue *= 10;
-        secondValue += +value;
+    secondValue = updateValueHelper(secondValue, value);
+}
+
+function updateValueHelper(variable, value) {
+    /**
+     * Helper function to update number variables
+     */
+    // For decimal dot
+    if (value === ".") {
+        if (("" + variable).includes(".")) return variable;
+        decimalFlag = true;
+        return variable + value;
     }
+
+    //Handle integer to decimal conversion
+    if (decimalFlag) {
+        decimalFlag = false;
+        variable += value;
+        return +variable;
+    }
+
+    // Condition below is here to handle firstValue as firstValue is also used to display text messages
+    if (typeof variable !== "number") return +value;
+    variable += value;
+    return +variable;
 }

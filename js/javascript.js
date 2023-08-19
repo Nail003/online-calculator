@@ -14,6 +14,7 @@ const operatorButtons = document.querySelectorAll(".operatorButton");
 const clearButton = document.querySelector(".clearButton");
 const assignButton = document.querySelector(".assignButton");
 const changeSignButton = document.querySelector(".changeSignButton");
+const decimalButton = document.querySelector(".decimalButton");
 
 numberButtons.forEach((button) => {
     button.addEventListener("click", numberButtonHandler);
