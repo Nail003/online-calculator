@@ -4,5 +4,3 @@ import { operate } from "./calculator.js";
 const firstValue = 10;
 const secondValue = 5;
 const operator = "/";
-
-console.log(operate(firstValue, secondValue, operator));
