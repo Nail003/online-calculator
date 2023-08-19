@@ -105,6 +105,7 @@ export function undoValue() {
     } else {
         secondValue = ("" + secondValue).slice(0, -1);
     }
+
     updateDisplay();
 }
 
