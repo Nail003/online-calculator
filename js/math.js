@@ -4,3 +4,10 @@ export function add(a, b) {
      */
     return a + b;
 }
+
+export function subtract(a, b) {
+    /**
+     * Return the difference of two numbers
+     */
+    return a - b;
+}
