@@ -20,7 +20,11 @@ export function operate() {
     let result = 0;
 
     // Edge Case: No complete input
-    if ((operator === "" || secondValue === "") && firstValue !== "") return;
+    if (
+        (operator === "" || secondValue === "") &&
+        typeof firstValue === "number"
+    )
+        return;
 
     // Find result
     if (operator === "+") result = add(firstValue, secondValue);
@@ -76,7 +80,7 @@ function updateFirstValue(value) {
     /**
      * Function to update variable firstValue
      */
-    if (firstValue === "") firstValue = +value;
+    if (typeof firstValue !== "number") firstValue = +value;
     else {
         firstValue *= 10;
         firstValue += +value;
@@ -87,7 +91,7 @@ function updateSecondValue(value) {
     /**
      * Function to update variable secondValue
      */
-    if (secondValue === "") secondValue = +value;
+    if (typeof secondValue !== "number") secondValue = +value;
     else {
         secondValue *= 10;
         secondValue += +value;
