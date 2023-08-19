@@ -2,6 +2,9 @@ import { add, subtract, multiply, divide } from "./math.js";
 
 // Calculator variable
 let displayString = "";
+let firstValue = 10;
+let secondValue = 5;
+let operator = "/";
 
 // Storing DOM objects for better access speed
 const display = document.querySelector(".display");
