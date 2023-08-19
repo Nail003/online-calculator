@@ -1,5 +1,8 @@
 import { add, subtract, multiply, divide } from "./math.js";
 
+// Storing DOM objects for better access speed
+const display = document.querySelector(".display");
+
 export function operate(firstValue, secondValue, operator) {
     /**
      * Returns the result of specified operator on the given numbers
@@ -13,4 +16,11 @@ export function operate(firstValue, secondValue, operator) {
     if (operator === "x") return multiply(firstValue, secondValue);
     if (operator === "/") return divide(firstValue, secondValue);
     return "Please enter a valid operator";
+}
+
+export function updateDisplay(newDisplayText) {
+    /**
+     * Updates the display text of calculator screen
+     */
+    display.innerText = newDisplayText;
 }
