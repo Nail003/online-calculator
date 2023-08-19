@@ -1,3 +1,3 @@
-import { add, subtract } from "./math.js";
+import { add, subtract, multiply } from "./math.js";
 
-console.log(subtract(10, 20));
+console.log(multiply(10, 20));
