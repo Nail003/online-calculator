@@ -1,5 +1,8 @@
 import { add, subtract, multiply, divide } from "./math.js";
 
+// Calculator variable
+let displayString = "";
+
 // Storing DOM objects for better access speed
 const display = document.querySelector(".display");
 
@@ -18,9 +21,15 @@ export function operate(firstValue, secondValue, operator) {
     return "Please enter a valid operator";
 }
 
-export function updateDisplay(newDisplayText) {
+export function updateDisplay(newText = "") {
     /**
      * Updates the display text of calculator screen
      */
-    display.innerText = newDisplayText;
+    displayString += newText;
+    display.innerText = displayString;
+}
+
+export function clearScreen() {
+    displayString = "";
+    updateDisplay();
 }
