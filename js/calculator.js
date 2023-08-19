@@ -19,6 +19,9 @@ export function operate() {
      */
     let result = 0;
 
+    // Edge Case: No complete input
+    if ((operator === "" || secondValue === "") && firstValue !== "") return;
+
     // Find result
     if (operator === "+") result = add(firstValue, secondValue);
     if (operator === "-") result = subtract(firstValue, secondValue);
