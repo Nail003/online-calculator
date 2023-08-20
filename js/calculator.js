@@ -29,23 +29,10 @@ export function operate() {
     let result = 0;
 
     //Edge Case: Consecutive equal sign presses (Needs to be at the top)
-    lastSecondValue =
-        lastSecondValue === DEFAULT_VALUE ? secondValue : lastSecondValue;
-    if (
-        lastOperator !== DEFAULT_VALUE &&
-        secondValue === DEFAULT_VALUE &&
-        operator === DEFAULT_VALUE
-    ) {
-        operator = lastOperator;
-        secondValue = lastSecondValue;
-    }
+    handleConsecutiveAssigns();
 
     // Edge Case: No complete input
-    if (
-        (operator === DEFAULT_VALUE || typeof secondValue !== "number") &&
-        typeof firstValue === "number"
-    )
-        return;
+    if (isNoTCompleteInput()) return;
 
     // Find result
     if (operator === "+") result = add(firstValue, secondValue);
@@ -186,4 +173,33 @@ function updateValueHelper(variable, value) {
     if (typeof variable !== "number" || variable === Infinity) return +value;
     variable += value;
     return +variable;
+}
+
+function handleConsecutiveAssigns() {
+    /**
+     * Add functionality to handle consecutive equal button presses
+     * Behaves the same way as in regular calculators
+     */
+    lastSecondValue =
+        lastSecondValue === DEFAULT_VALUE ? secondValue : lastSecondValue;
+    if (
+        lastOperator !== DEFAULT_VALUE &&
+        secondValue === DEFAULT_VALUE &&
+        operator === DEFAULT_VALUE
+    ) {
+        operator = lastOperator;
+        secondValue = lastSecondValue;
+    }
+}
+
+function isNoTCompleteInput() {
+    /**
+     * Checks whether the user have given input for firstValue, secondValue and operator
+     */
+    if (
+        (operator === DEFAULT_VALUE || typeof secondValue !== "number") &&
+        typeof firstValue === "number"
+    )
+        return true;
+    return false;
 }
