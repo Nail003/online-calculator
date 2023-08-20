@@ -9,9 +9,11 @@ let firstValue = DEFAULT_VALUE;
 let secondValue = DEFAULT_VALUE;
 let operator = DEFAULT_VALUE;
 let lastAnswer = DEFAULT_VALUE;
+let lastOperator = DEFAULT_VALUE;
+let lastSecondValue = DEFAULT_VALUE; // For consecutive equal presses
 
 // Flags
-let decimalFlag = false;
+let decimalFlag = false; // When user press decimal button turn it to true
 
 // Storing DOM objects for better access speed
 const display = document.querySelector(".display");
@@ -26,6 +28,18 @@ export function operate() {
      */
     let result = 0;
 
+    //Edge Case: Consecutive equal sign presses (Needs to be at the top)
+    lastSecondValue =
+        lastSecondValue === DEFAULT_VALUE ? secondValue : lastSecondValue;
+    if (
+        lastOperator !== DEFAULT_VALUE &&
+        secondValue === DEFAULT_VALUE &&
+        operator === DEFAULT_VALUE
+    ) {
+        operator = lastOperator;
+        secondValue = lastSecondValue;
+    }
+
     // Edge Case: No complete input
     if (
         (operator === DEFAULT_VALUE || typeof secondValue !== "number") &&
@@ -39,8 +53,9 @@ export function operate() {
     if (operator === "x") result = multiply(firstValue, secondValue);
     if (operator === "/") result = divide(firstValue, secondValue);
 
-    // Storing result
+    // Storing result and operator
     lastAnswer = result;
+    lastOperator = operator;
 
     // Display result
     clearDisplay();
@@ -84,6 +99,15 @@ export function clearDisplay() {
     operator = DEFAULT_VALUE;
     updateDisplay();
     display.innerText = "(*_*)";
+}
+
+export function clearStorage() {
+    /**
+     * Clears the stored values of calculator
+     */
+    lastAnswer = DEFAULT_VALUE;
+    lastOperator = DEFAULT_VALUE;
+    lastSecondValue = DEFAULT_VALUE;
 }
 
 export function changeSign() {
@@ -141,6 +165,9 @@ function updateValueHelper(variable, value) {
     /**
      * Helper function to update number variables
      */
+    // Reset consecutive equal button presses
+    lastSecondValue = DEFAULT_VALUE;
+
     // For decimal dot
     if (value === ".") {
         if (("" + variable).includes(".")) return variable;

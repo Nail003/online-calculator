@@ -2,6 +2,7 @@ import {
     assignLastAnswerToCurrentValue,
     changeSign,
     clearDisplay,
+    clearStorage,
     operate,
     undoValue,
     updateNumber,
@@ -22,6 +23,7 @@ export function assignButtonHandler(e) {
 
 export function clearButtonHandler() {
     clearDisplay();
+    clearStorage();
 }
 
 export function changeSignButtonHandler() {
